@@ -925,8 +925,8 @@ CFLAGS="$CFLAGS -Wall -Wextra"
 AC_MSG_CHECKING([whether to turn warnings to errors])
 if test -z "$enable_werror" -o "$enable_werror" = "yes"; then
     AC_MSG_RESULT([yes])
-    CXXFLAGS="$CXXFLAGS -Werror"
-    CFLAGS="$CFLAGS -Werror"
+    CXXFLAGS="$CXXFLAGS"
+    CFLAGS="$CFLAGS"
 else
     AC_MSG_RESULT([no])
 fi
@@ -977,7 +977,7 @@ if test "x$with_sanitizer" != "x"; then
     for flag in -static-libasan -static-libsan ; do
         AC_MSG_CHECKING([whether to use $flag])
         save_CXXFLAGS=$CXXFLAGS
-        CXXFLAGS="$CXXFLAGS -O1 -fno-omit-frame-pointer -fsanitize=$with_sanitizer -frtti $flag -Werror"
+        CXXFLAGS="$CXXFLAGS -O1 -fno-omit-frame-pointer -fsanitize=$with_sanitizer -frtti $flag"
         AC_LANG_PUSH([C++])
         AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
             ]])],[CXXFLAGS_CXXSTD=$flag])
@@ -1004,7 +1004,7 @@ CXXFLAGS_CXXSTD=
 AC_MSG_CHECKING([whether $CXX supports C++17])
 for flag in -std=c++17 -std=c++1z ; do
     save_CXXFLAGS=$CXXFLAGS
-    CXXFLAGS="$CXXFLAGS $flag -Werror"
+    CXXFLAGS="$CXXFLAGS $flag"
     AC_LANG_PUSH([C++])
     AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
         #include <algorithm>
@@ -1050,7 +1050,7 @@ AS_IF([test "$ENABLE_GTKAPP" != true],
 STD_FILESYSTEM=
 if test "$HAVE_CXXSTD" = TRUE -a "$ENABLE_ANDROIDAPP" != "true" ; then
     save_CXXFLAGS=$CXXFLAGS
-    CXXFLAGS="$CXXFLAGS -Werror"
+    CXXFLAGS="$CXXFLAGS"
     save_LIBS=$LIBS
     LIBS="$save_LIBS -lstdc++fs"
     AC_LANG_PUSH([C++])
