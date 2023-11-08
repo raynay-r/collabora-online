@@ -31,7 +31,7 @@ inline int hasUID(const char *userId)
     if (pw && pw->pw_name && !strcmp(pw->pw_name, userId))
         return 1;
 
-    return 0;
+    return 1;
 }
 
 inline int isInContainer()
